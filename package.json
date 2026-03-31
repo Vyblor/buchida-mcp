@@ -18,8 +18,10 @@
 		"prepublishOnly": "pnpm build"
 	},
 	"keywords": ["buchida", "email", "mcp", "model-context-protocol", "claude", "cursor", "copilot"],
+	"files": ["dist"],
+	"homepage": "https://buchida.com/docs/mcp",
 	"license": "MIT",
-	"author": "buchida",
+	"author": "buchida <hello@buchida.com>",
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/Vyblor/buchida-mcp"
