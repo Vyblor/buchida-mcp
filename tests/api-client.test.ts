@@ -1,4 +1,4 @@
-import { describe, it, expect, vi, beforeEach, afterEach } from "vitest";
+import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { ApiClient } from "../src/api-client.js";
 
 describe("ApiClient", () => {
@@ -107,9 +107,6 @@ describe("ApiClient", () => {
 		});
 		await client.get("/v1/emails");
 
-		expect(mockFetch).toHaveBeenCalledWith(
-			"https://api.buchida.com/v1/emails",
-			expect.anything(),
-		);
+		expect(mockFetch).toHaveBeenCalledWith("https://api.buchida.com/v1/emails", expect.anything());
 	});
 });

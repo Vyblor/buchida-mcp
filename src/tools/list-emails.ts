@@ -27,10 +27,7 @@ export const listEmailsTool = {
 	},
 };
 
-export async function handleListEmails(
-	client: ApiClient,
-	args: Record<string, unknown>,
-) {
+export async function handleListEmails(client: ApiClient, args: Record<string, unknown>) {
 	const params = new URLSearchParams();
 	if (args.limit) params.set("limit", String(args.limit));
 	if (args.offset) params.set("offset", String(args.offset));
@@ -41,7 +38,10 @@ export async function handleListEmails(
 	const response = await client.get(path);
 
 	if (!response.ok) {
-		return { content: [{ type: "text" as const, text: `Error: ${response.error}` }], isError: true };
+		return {
+			content: [{ type: "text" as const, text: `Error: ${response.error}` }],
+			isError: true,
+		};
 	}
 
 	return {

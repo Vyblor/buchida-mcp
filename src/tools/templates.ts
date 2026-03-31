@@ -22,10 +22,7 @@ export const listTemplatesTool = {
 	},
 };
 
-export async function handleListTemplates(
-	client: ApiClient,
-	args: Record<string, unknown>,
-) {
+export async function handleListTemplates(client: ApiClient, args: Record<string, unknown>) {
 	const params = new URLSearchParams();
 	if (args.limit) params.set("limit", String(args.limit));
 	if (args.offset) params.set("offset", String(args.offset));
@@ -35,7 +32,10 @@ export async function handleListTemplates(
 	const response = await client.get(path);
 
 	if (!response.ok) {
-		return { content: [{ type: "text" as const, text: `Error: ${response.error}` }], isError: true };
+		return {
+			content: [{ type: "text" as const, text: `Error: ${response.error}` }],
+			isError: true,
+		};
 	}
 
 	return {
@@ -72,22 +72,22 @@ export const sendWithTemplateTool = {
 			variables: {
 				type: "object",
 				additionalProperties: { type: "string" },
-				description: "Template variables to substitute (e.g. { name: \"Alice\" })",
+				description: 'Template variables to substitute (e.g. { name: "Alice" })',
 			},
 		},
 		required: ["template_id", "from", "to"],
 	},
 };
 
-export async function handleSendWithTemplate(
-	client: ApiClient,
-	args: Record<string, unknown>,
-) {
+export async function handleSendWithTemplate(client: ApiClient, args: Record<string, unknown>) {
 	const { api_key: _, ...payload } = args;
 	const response = await client.post("/v1/emails/template", payload);
 
 	if (!response.ok) {
-		return { content: [{ type: "text" as const, text: `Error: ${response.error}` }], isError: true };
+		return {
+			content: [{ type: "text" as const, text: `Error: ${response.error}` }],
+			isError: true,
+		};
 	}
 
 	return {

@@ -14,14 +14,14 @@ export const listApiKeysTool = {
 	},
 };
 
-export async function handleListApiKeys(
-	client: ApiClient,
-	_args: Record<string, unknown>,
-) {
+export async function handleListApiKeys(client: ApiClient, _args: Record<string, unknown>) {
 	const response = await client.get("/v1/api-keys");
 
 	if (!response.ok) {
-		return { content: [{ type: "text" as const, text: `Error: ${response.error}` }], isError: true };
+		return {
+			content: [{ type: "text" as const, text: `Error: ${response.error}` }],
+			isError: true,
+		};
 	}
 
 	return {
@@ -57,15 +57,15 @@ export const createApiKeyTool = {
 	},
 };
 
-export async function handleCreateApiKey(
-	client: ApiClient,
-	args: Record<string, unknown>,
-) {
+export async function handleCreateApiKey(client: ApiClient, args: Record<string, unknown>) {
 	const { api_key: _, ...payload } = args;
 	const response = await client.post("/v1/api-keys", payload);
 
 	if (!response.ok) {
-		return { content: [{ type: "text" as const, text: `Error: ${response.error}` }], isError: true };
+		return {
+			content: [{ type: "text" as const, text: `Error: ${response.error}` }],
+			isError: true,
+		};
 	}
 
 	return {

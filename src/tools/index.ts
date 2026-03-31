@@ -13,7 +13,12 @@ export {
 	verifyDomainTool,
 	handleVerifyDomain,
 } from "./domains.js";
-export { listApiKeysTool, handleListApiKeys, createApiKeyTool, handleCreateApiKey } from "./api-keys.js";
+export {
+	listApiKeysTool,
+	handleListApiKeys,
+	createApiKeyTool,
+	handleCreateApiKey,
+} from "./api-keys.js";
 export { getMetricsTool, handleGetMetrics } from "./metrics.js";
 export { sendBatchTool, handleSendBatch } from "./send-batch.js";
 export {
@@ -25,25 +30,30 @@ export {
 
 import type { ApiClient } from "../api-client.js";
 
-import { sendEmailTool, handleSendEmail } from "./send-email.js";
-import { listEmailsTool, handleListEmails } from "./list-emails.js";
-import { getEmailTool, handleGetEmail } from "./get-email.js";
 import {
-	listDomainsTool,
-	handleListDomains,
+	createApiKeyTool,
+	handleCreateApiKey,
+	handleListApiKeys,
+	listApiKeysTool,
+} from "./api-keys.js";
+import {
 	addDomainTool,
 	handleAddDomain,
-	verifyDomainTool,
+	handleListDomains,
 	handleVerifyDomain,
+	listDomainsTool,
+	verifyDomainTool,
 } from "./domains.js";
-import { listApiKeysTool, handleListApiKeys, createApiKeyTool, handleCreateApiKey } from "./api-keys.js";
+import { getEmailTool, handleGetEmail } from "./get-email.js";
+import { handleListEmails, listEmailsTool } from "./list-emails.js";
 import { getMetricsTool, handleGetMetrics } from "./metrics.js";
-import { sendBatchTool, handleSendBatch } from "./send-batch.js";
+import { handleSendBatch, sendBatchTool } from "./send-batch.js";
+import { handleSendEmail, sendEmailTool } from "./send-email.js";
 import {
-	listTemplatesTool,
 	handleListTemplates,
-	sendWithTemplateTool,
 	handleSendWithTemplate,
+	listTemplatesTool,
+	sendWithTemplateTool,
 } from "./templates.js";
 
 export interface ToolDefinition {

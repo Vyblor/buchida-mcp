@@ -1,6 +1,6 @@
-import { describe, it, expect, vi, beforeEach, afterEach } from "vitest";
-import { allTools, toolHandlers } from "../src/tools/index.js";
+import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { ApiClient } from "../src/api-client.js";
+import { allTools, toolHandlers } from "../src/tools/index.js";
 
 describe("Tool registry", () => {
 	it("exports 12 tools", () => {
@@ -136,10 +136,7 @@ describe("Tool handlers", () => {
 		mockSuccess({ data: [{ id: "dom_1", domain: "example.com" }] });
 		await toolHandlers.list_domains(createClient(), {});
 
-		expect(mockFetch).toHaveBeenCalledWith(
-			"https://api.buchida.com/v1/domains",
-			expect.anything(),
-		);
+		expect(mockFetch).toHaveBeenCalledWith("https://api.buchida.com/v1/domains", expect.anything());
 	});
 
 	it("add_domain calls POST /v1/domains", async () => {

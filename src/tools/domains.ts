@@ -14,14 +14,14 @@ export const listDomainsTool = {
 	},
 };
 
-export async function handleListDomains(
-	client: ApiClient,
-	_args: Record<string, unknown>,
-) {
+export async function handleListDomains(client: ApiClient, _args: Record<string, unknown>) {
 	const response = await client.get("/v1/domains");
 
 	if (!response.ok) {
-		return { content: [{ type: "text" as const, text: `Error: ${response.error}` }], isError: true };
+		return {
+			content: [{ type: "text" as const, text: `Error: ${response.error}` }],
+			isError: true,
+		};
 	}
 
 	return {
@@ -48,14 +48,14 @@ export const addDomainTool = {
 	},
 };
 
-export async function handleAddDomain(
-	client: ApiClient,
-	args: Record<string, unknown>,
-) {
+export async function handleAddDomain(client: ApiClient, args: Record<string, unknown>) {
 	const response = await client.post("/v1/domains", { domain: args.domain });
 
 	if (!response.ok) {
-		return { content: [{ type: "text" as const, text: `Error: ${response.error}` }], isError: true };
+		return {
+			content: [{ type: "text" as const, text: `Error: ${response.error}` }],
+			isError: true,
+		};
 	}
 
 	return {
@@ -82,14 +82,14 @@ export const verifyDomainTool = {
 	},
 };
 
-export async function handleVerifyDomain(
-	client: ApiClient,
-	args: Record<string, unknown>,
-) {
+export async function handleVerifyDomain(client: ApiClient, args: Record<string, unknown>) {
 	const response = await client.post(`/v1/domains/${args.domain_id}/verify`);
 
 	if (!response.ok) {
-		return { content: [{ type: "text" as const, text: `Error: ${response.error}` }], isError: true };
+		return {
+			content: [{ type: "text" as const, text: `Error: ${response.error}` }],
+			isError: true,
+		};
 	}
 
 	return {

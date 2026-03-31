@@ -1,5 +1,5 @@
-import { describe, it, expect } from "vitest";
 import { Server } from "@modelcontextprotocol/sdk/server/index.js";
+import { describe, expect, it } from "vitest";
 import { createServer } from "../src/server.js";
 
 describe("MCP Server", () => {

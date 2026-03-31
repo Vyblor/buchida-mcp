@@ -46,10 +46,7 @@ export const sendBatchTool = {
 	},
 };
 
-export async function handleSendBatch(
-	client: ApiClient,
-	args: Record<string, unknown>,
-) {
+export async function handleSendBatch(client: ApiClient, args: Record<string, unknown>) {
 	const emails = args.emails as unknown[];
 
 	if (!Array.isArray(emails) || emails.length === 0) {
@@ -69,7 +66,10 @@ export async function handleSendBatch(
 	const response = await client.post("/v1/emails/batch", { emails });
 
 	if (!response.ok) {
-		return { content: [{ type: "text" as const, text: `Error: ${response.error}` }], isError: true };
+		return {
+			content: [{ type: "text" as const, text: `Error: ${response.error}` }],
+			isError: true,
+		};
 	}
 
 	return {

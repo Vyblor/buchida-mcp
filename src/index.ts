@@ -10,10 +10,10 @@
  *   buchida-mcp --http --port 8080
  */
 
+import { createServer as createHttpServer } from "node:http";
 import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js";
 import { StreamableHTTPServerTransport } from "@modelcontextprotocol/sdk/server/streamableHttp.js";
 import { createServer } from "./server.js";
-import { createServer as createHttpServer } from "node:http";
 
 async function main() {
 	const args = process.argv.slice(2);
@@ -25,7 +25,9 @@ async function main() {
 		const portArg = args.indexOf("--port");
 		const port = portArg !== -1 ? Number.parseInt(args[portArg + 1], 10) : 3100;
 
-		const transport = new StreamableHTTPServerTransport({ sessionIdGenerator: () => crypto.randomUUID() });
+		const transport = new StreamableHTTPServerTransport({
+			sessionIdGenerator: () => crypto.randomUUID(),
+		});
 
 		const httpServer = createHttpServer(async (req, res) => {
 			// Health check

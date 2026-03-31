@@ -1,5 +1,5 @@
-import { describe, it, expect, beforeEach, afterEach } from "vitest";
-import { resolveApiKey, getBaseUrl } from "../src/auth.js";
+import { afterEach, beforeEach, describe, expect, it } from "vitest";
+import { getBaseUrl, resolveApiKey } from "../src/auth.js";
 
 describe("resolveApiKey", () => {
 	const originalEnv = process.env.NSEND_API_KEY;

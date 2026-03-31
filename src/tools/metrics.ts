@@ -26,10 +26,7 @@ export const getMetricsTool = {
 	},
 };
 
-export async function handleGetMetrics(
-	client: ApiClient,
-	args: Record<string, unknown>,
-) {
+export async function handleGetMetrics(client: ApiClient, args: Record<string, unknown>) {
 	const params = new URLSearchParams();
 	if (args.from) params.set("from", String(args.from));
 	if (args.to) params.set("to", String(args.to));
@@ -40,7 +37,10 @@ export async function handleGetMetrics(
 	const response = await client.get(path);
 
 	if (!response.ok) {
-		return { content: [{ type: "text" as const, text: `Error: ${response.error}` }], isError: true };
+		return {
+			content: [{ type: "text" as const, text: `Error: ${response.error}` }],
+			isError: true,
+		};
 	}
 
 	return {

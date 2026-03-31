@@ -12,7 +12,8 @@ export const sendEmailTool = {
 			},
 			from: {
 				type: "string",
-				description: 'Sender email address (e.g. "hello@example.com" or "Name <hello@example.com>")',
+				description:
+					'Sender email address (e.g. "hello@example.com" or "Name <hello@example.com>")',
 			},
 			to: {
 				type: "string",
@@ -54,15 +55,15 @@ export const sendEmailTool = {
 	},
 };
 
-export async function handleSendEmail(
-	client: ApiClient,
-	args: Record<string, unknown>,
-) {
+export async function handleSendEmail(client: ApiClient, args: Record<string, unknown>) {
 	const { api_key: _, ...payload } = args;
 	const response = await client.post("/v1/emails", payload);
 
 	if (!response.ok) {
-		return { content: [{ type: "text" as const, text: `Error: ${response.error}` }], isError: true };
+		return {
+			content: [{ type: "text" as const, text: `Error: ${response.error}` }],
+			isError: true,
+		};
 	}
 
 	return {

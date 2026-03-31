@@ -17,15 +17,7 @@
 		"lint:fix": "biome check --write .",
 		"prepublishOnly": "pnpm build"
 	},
-	"keywords": [
-		"buchida",
-		"email",
-		"mcp",
-		"model-context-protocol",
-		"claude",
-		"cursor",
-		"copilot"
-	],
+	"keywords": ["buchida", "email", "mcp", "model-context-protocol", "claude", "cursor", "copilot"],
 	"license": "MIT",
 	"author": "buchida",
 	"repository": {

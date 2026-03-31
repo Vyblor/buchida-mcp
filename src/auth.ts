@@ -15,9 +15,7 @@ export function resolveApiKey(toolInputKey?: string): string {
 	}
 
 	if (!API_KEY_PATTERN.test(key)) {
-		throw new Error(
-			"Invalid API key format. Expected: bc_live_xxx, bc_test_xxx, or bc_cli_xxx",
-		);
+		throw new Error("Invalid API key format. Expected: bc_live_xxx, bc_test_xxx, or bc_cli_xxx");
 	}
 
 	return key;

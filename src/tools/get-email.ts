@@ -19,14 +19,14 @@ export const getEmailTool = {
 	},
 };
 
-export async function handleGetEmail(
-	client: ApiClient,
-	args: Record<string, unknown>,
-) {
+export async function handleGetEmail(client: ApiClient, args: Record<string, unknown>) {
 	const response = await client.get(`/v1/emails/${args.email_id}`);
 
 	if (!response.ok) {
-		return { content: [{ type: "text" as const, text: `Error: ${response.error}` }], isError: true };
+		return {
+			content: [{ type: "text" as const, text: `Error: ${response.error}` }],
+			isError: true,
+		};
 	}
 
 	return {
