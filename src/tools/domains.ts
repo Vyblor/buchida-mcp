@@ -8,7 +8,7 @@ export const listDomainsTool = {
 		properties: {
 			api_key: {
 				type: "string",
-				description: "buchida API key (optional if NSEND_API_KEY env is set)",
+				description: "buchida API key (optional if BUCHIDA_API_KEY env is set)",
 			},
 		},
 	},
@@ -37,7 +37,7 @@ export const addDomainTool = {
 		properties: {
 			api_key: {
 				type: "string",
-				description: "buchida API key (optional if NSEND_API_KEY env is set)",
+				description: "buchida API key (optional if BUCHIDA_API_KEY env is set)",
 			},
 			domain: {
 				type: "string",
@@ -71,7 +71,7 @@ export const verifyDomainTool = {
 		properties: {
 			api_key: {
 				type: "string",
-				description: "buchida API key (optional if NSEND_API_KEY env is set)",
+				description: "buchida API key (optional if BUCHIDA_API_KEY env is set)",
 			},
 			domain_id: {
 				type: "string",

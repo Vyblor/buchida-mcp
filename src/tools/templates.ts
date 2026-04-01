@@ -8,7 +8,7 @@ export const listTemplatesTool = {
 		properties: {
 			api_key: {
 				type: "string",
-				description: "buchida API key (optional if NSEND_API_KEY env is set)",
+				description: "buchida API key (optional if BUCHIDA_API_KEY env is set)",
 			},
 			limit: {
 				type: "number",
@@ -51,7 +51,7 @@ export const sendWithTemplateTool = {
 		properties: {
 			api_key: {
 				type: "string",
-				description: "buchida API key (optional if NSEND_API_KEY env is set)",
+				description: "buchida API key (optional if BUCHIDA_API_KEY env is set)",
 			},
 			template_id: {
 				type: "string",

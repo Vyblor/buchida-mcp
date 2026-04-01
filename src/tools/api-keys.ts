@@ -8,7 +8,7 @@ export const listApiKeysTool = {
 		properties: {
 			api_key: {
 				type: "string",
-				description: "buchida API key (optional if NSEND_API_KEY env is set)",
+				description: "buchida API key (optional if BUCHIDA_API_KEY env is set)",
 			},
 		},
 	},
@@ -37,7 +37,7 @@ export const createApiKeyTool = {
 		properties: {
 			api_key: {
 				type: "string",
-				description: "buchida API key (optional if NSEND_API_KEY env is set)",
+				description: "buchida API key (optional if BUCHIDA_API_KEY env is set)",
 			},
 			name: {
 				type: "string",

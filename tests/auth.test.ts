@@ -2,13 +2,13 @@ import { afterEach, beforeEach, describe, expect, it } from "vitest";
 import { getBaseUrl, resolveApiKey } from "../src/auth.js";
 
 describe("resolveApiKey", () => {
-	const originalEnv = process.env.NSEND_API_KEY;
+	const originalEnv = process.env.BUCHIDA_API_KEY;
 
 	afterEach(() => {
 		if (originalEnv !== undefined) {
-			process.env.NSEND_API_KEY = originalEnv;
+			process.env.BUCHIDA_API_KEY = originalEnv;
 		} else {
-			delete process.env.NSEND_API_KEY;
+			delete process.env.BUCHIDA_API_KEY;
 		}
 	});
 
@@ -17,13 +17,13 @@ describe("resolveApiKey", () => {
 		expect(resolveApiKey(key)).toBe(key);
 	});
 
-	it("falls back to NSEND_API_KEY env var", () => {
-		process.env.NSEND_API_KEY = "bc_test_yyyyyyyyyyyyyyyyyyyy";
+	it("falls back to BUCHIDA_API_KEY env var", () => {
+		process.env.BUCHIDA_API_KEY = "bc_test_yyyyyyyyyyyyyyyyyyyy";
 		expect(resolveApiKey()).toBe("bc_test_yyyyyyyyyyyyyyyyyyyy");
 	});
 
 	it("throws when no key is available", () => {
-		delete process.env.NSEND_API_KEY;
+		delete process.env.BUCHIDA_API_KEY;
 		expect(() => resolveApiKey()).toThrow("No API key provided");
 	});
 
