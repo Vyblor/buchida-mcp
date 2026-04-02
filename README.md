@@ -1,42 +1,32 @@
-# buchida-mcp
+<div align="center">
+  <img src="assets/logo-black.svg" alt="buchida" width="280" />
+  <p><strong>MCP server for the buchida email API</strong></p>
 
-MCP (Model Context Protocol) server for the buchida email API. Send emails, manage domains, view analytics, and more from Claude Desktop, Claude Code, Cursor, or any MCP-compatible client.
+  [English](README.md) | [한국어](README.ko.md) | [日本語](README.ja.md) | [中文](README.zh.md)
+
+  [![npm version](https://img.shields.io/npm/v/@buchida/mcp)](https://www.npmjs.com/package/@buchida/mcp) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+</div>
+
+---
+
+MCP (Model Context Protocol) server for the [buchida](https://buchida.com) email API. Send emails, manage domains, and view analytics from Claude Desktop, Claude Code, Cursor, or any MCP-compatible client.
 
 ## Installation
 
 ```bash
-npm install -g buchida-mcp
+npx @buchida/mcp
 ```
 
-Or run directly with npx:
+## Quick Start
 
-```bash
-npx buchida-mcp
-```
-
-## Configuration
-
-Set your buchida API key as an environment variable:
-
-```bash
-export BUCHIDA_API_KEY=bc_live_xxxxxxxxxxxxxxxxxxxx
-```
-
-## Setup
-
-### Claude Desktop
-
-Add the following to your Claude Desktop configuration file:
-
-- **macOS**: `~/Library/Application Support/Claude/claude_desktop_config.json`
-- **Windows**: `%APPDATA%\Claude\claude_desktop_config.json`
+Add to your Claude Desktop config (`~/Library/Application Support/Claude/claude_desktop_config.json`):
 
 ```json
 {
   "mcpServers": {
     "buchida": {
       "command": "npx",
-      "args": ["buchida-mcp"],
+      "args": ["@buchida/mcp"],
       "env": {
         "BUCHIDA_API_KEY": "bc_live_xxxxxxxxxxxxxxxxxxxx"
       }
@@ -45,41 +35,7 @@ Add the following to your Claude Desktop configuration file:
 }
 ```
 
-### Claude Code
-
-Add to your project's `.claude/settings.json` or global `~/.claude/settings.json`:
-
-```json
-{
-  "mcpServers": {
-    "buchida": {
-      "command": "npx",
-      "args": ["buchida-mcp"],
-      "env": {
-        "BUCHIDA_API_KEY": "bc_live_xxxxxxxxxxxxxxxxxxxx"
-      }
-    }
-  }
-}
-```
-
-### Cursor
-
-Add to your Cursor MCP settings (Settings > MCP Servers):
-
-```json
-{
-  "mcpServers": {
-    "buchida": {
-      "command": "npx",
-      "args": ["buchida-mcp"],
-      "env": {
-        "BUCHIDA_API_KEY": "bc_live_xxxxxxxxxxxxxxxxxxxx"
-      }
-    }
-  }
-}
-```
+Then ask Claude: "Send a welcome email to user@example.com from hello@mybrand.com"
 
 ## Available Tools
 
@@ -91,33 +47,13 @@ Add to your Cursor MCP settings (Settings > MCP Servers):
 | `list_emails` | List sent emails with filtering |
 | `list_domains` | List verified sending domains |
 | `manage_domains` | Add, verify, or remove domains |
-| `list_api_keys` | List API keys |
-| `manage_api_keys` | Create or revoke API keys |
 | `get_metrics` | View email analytics and deliverability metrics |
-| `list_templates` | List available email templates |
 
-## Usage Examples
+## Documentation
 
-Once configured, you can interact with buchida through natural language in your MCP client:
-
-- "Send a welcome email to user@example.com from hello@mybrand.com"
-- "Show me email delivery stats for the last 7 days"
-- "List all my verified domains"
-- "Check the status of the last email I sent"
-- "Create a new API key for my staging environment"
-
-## Transport
-
-The MCP server supports stdio transport by default, which is compatible with all major MCP clients. HTTP transport is also available for custom integrations:
-
-```bash
-buchida-mcp --transport http --port 3100
-```
-
-## Requirements
-
-- Node.js >= 20
-- A buchida API key (get one free at [buchida.com](https://buchida.com))
+- [Quick Start](https://buchida.com/docs/quickstart)
+- [MCP Setup Guide](https://buchida.com/docs/mcp)
+- [GitHub](https://github.com/Vyblor/buchida-mcp)
 
 ## License
 
