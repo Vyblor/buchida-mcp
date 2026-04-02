@@ -1,6 +1,6 @@
 {
 	"name": "@buchida/mcp",
-	"version": "0.1.0",
+	"version": "0.1.1",
 	"description": "MCP server for the buchida email API — send emails, manage domains, and more from Claude, Cursor, or Copilot",
 	"type": "module",
 	"bin": {
@@ -18,7 +18,7 @@
 		"prepublishOnly": "pnpm build"
 	},
 	"keywords": ["buchida", "email", "mcp", "model-context-protocol", "claude", "cursor", "copilot"],
-	"files": ["dist"],
+	"files": ["dist", "README.md"],
 	"homepage": "https://buchida.com/docs/mcp",
 	"license": "MIT",
 	"author": "buchida <hello@buchida.com>",
