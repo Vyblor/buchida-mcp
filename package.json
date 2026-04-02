@@ -1,5 +1,5 @@
 {
-	"name": "buchida-mcp",
+	"name": "@buchida/mcp",
 	"version": "0.1.0",
 	"description": "MCP server for the buchida email API — send emails, manage domains, and more from Claude, Cursor, or Copilot",
 	"type": "module",
