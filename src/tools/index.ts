@@ -26,6 +26,12 @@ export {
 	handleListTemplates,
 	sendWithTemplateTool,
 	handleSendWithTemplate,
+	emailTemplateListTool,
+	handleEmailTemplateList,
+	emailTemplateRenderTool,
+	handleEmailTemplateRender,
+	emailTemplatePreviewTool,
+	handleEmailTemplatePreview,
 } from "./templates.js";
 
 import type { ApiClient } from "../api-client.js";
@@ -50,6 +56,12 @@ import { getMetricsTool, handleGetMetrics } from "./metrics.js";
 import { handleSendBatch, sendBatchTool } from "./send-batch.js";
 import { handleSendEmail, sendEmailTool } from "./send-email.js";
 import {
+	emailTemplateListTool,
+	emailTemplatePreviewTool,
+	emailTemplateRenderTool,
+	handleEmailTemplateList,
+	handleEmailTemplatePreview,
+	handleEmailTemplateRender,
 	handleListTemplates,
 	handleSendWithTemplate,
 	listTemplatesTool,
@@ -80,6 +92,9 @@ export const allTools: ToolDefinition[] = [
 	sendBatchTool,
 	listTemplatesTool,
 	sendWithTemplateTool,
+	emailTemplateListTool,
+	emailTemplateRenderTool,
+	emailTemplatePreviewTool,
 ];
 
 export const toolHandlers: Record<string, ToolHandler> = {
@@ -95,4 +110,7 @@ export const toolHandlers: Record<string, ToolHandler> = {
 	send_batch: handleSendBatch,
 	list_templates: handleListTemplates,
 	send_with_template: handleSendWithTemplate,
+	email_template_list: handleEmailTemplateList,
+	email_template_render: handleEmailTemplateRender,
+	email_template_preview: handleEmailTemplatePreview,
 };
