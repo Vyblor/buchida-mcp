@@ -1,25 +1,18 @@
-<div align="center">
-  <img src="assets/logo-black.svg" alt="buchida" width="280" />
-  <p><strong>MCP server for the buchida email API</strong></p>
+# @buchida/mcp
 
-  [English](README.md) | [한국어](README.ko.md) | [日本語](README.ja.md) | [中文](README.zh.md)
+**buchida MCP server — Email API for AI agents**
 
-  [![npm version](https://img.shields.io/npm/v/@buchida/mcp)](https://www.npmjs.com/package/@buchida/mcp) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
-</div>
+@buchida/mcp is the official Model Context Protocol server for **buchida** — an email API built for AI agents. buchida ships a CLI, an MCP server, and SDKs in 5 languages (Node, Python, Go, Ruby, Java), all sharing the same REST API surface. `@buchida/email` templates render Korean, Japanese, and Chinese natively.
 
----
-
-MCP (Model Context Protocol) server for the [buchida](https://buchida.com) email API. Send emails, manage domains, and view analytics from Claude Desktop, Claude Code, Cursor, or any MCP-compatible client.
-
-## Installation
+## Install
 
 ```bash
 npx @buchida/mcp
 ```
 
-## Quick Start
+## Send your first email
 
-Add to your Claude Desktop config (`~/Library/Application Support/Claude/claude_desktop_config.json`):
+Add to your MCP client config (e.g. `~/Library/Application Support/Claude/claude_desktop_config.json`):
 
 ```json
 {
@@ -28,32 +21,32 @@ Add to your Claude Desktop config (`~/Library/Application Support/Claude/claude_
       "command": "npx",
       "args": ["@buchida/mcp"],
       "env": {
-        "BUCHIDA_API_KEY": "bc_live_xxxxxxxxxxxxxxxxxxxx"
+        "BUCHIDA_API_KEY": "bc_live_..."
       }
     }
   }
 }
 ```
 
-Then ask Claude: "Send a welcome email to user@example.com from hello@mybrand.com"
-
-## Available Tools
-
-| Tool | Description |
-|------|-------------|
-| `send_email` | Send a transactional email |
-| `send_batch` | Send emails to multiple recipients |
-| `get_email` | Get details and status of a sent email |
-| `list_emails` | List sent emails with filtering |
-| `list_domains` | List verified sending domains |
-| `manage_domains` | Add, verify, or remove domains |
-| `get_metrics` | View email analytics and deliverability metrics |
+After configuring, ask your agent:
+> "Send a test email to hello@example.com saying 'Hello from buchida'"
 
 ## Documentation
 
-- [Quick Start](https://buchida.com/docs/quickstart)
-- [MCP Setup Guide](https://buchida.com/docs/mcp)
-- [GitHub](https://github.com/Vyblor/buchida-mcp)
+Full docs: **[buchida.com/docs](https://buchida.com/docs)**
+
+- API reference: https://buchida.com/docs/api-reference
+- Quickstart guide: https://buchida.com/docs/quickstart
+- CJK email templates: https://buchida.com/docs/templates
+- MCP server setup: https://buchida.com/docs/mcp
+- CLI reference: https://buchida.com/docs/cli
+
+## Links
+
+- **Website:** [buchida.com](https://buchida.com)
+- **Documentation:** [buchida.com/docs](https://buchida.com/docs)
+- **Pricing:** [buchida.com/pricing](https://buchida.com/pricing)
+- **GitHub:** https://github.com/Vyblor/buchida-mcp
 
 ## License
 
