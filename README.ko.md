@@ -1,15 +1,15 @@
 <div align="center">
   <img src="assets/logo-black.svg" alt="buchida" width="280" />
-  <p><strong>buchida 이메일 API를 위한 MCP 서버</strong></p>
+  <p><strong>buchida MCP 서버 — AI 에이전트를 위한 이메일 API</strong></p>
 
-  [English](README.md) | [한국어](README.ko.md) | [日本語](README.ja.md) | [中文](README.zh.md)
+  [English](README.md) | [**한국어**](README.ko.md) | [日本語](README.ja.md) | [中文](README.zh.md)
 
   [![npm version](https://img.shields.io/npm/v/@buchida/mcp)](https://www.npmjs.com/package/@buchida/mcp) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 </div>
 
 ---
 
-[buchida](https://buchida.com) 이메일 API를 위한 MCP(Model Context Protocol) 서버입니다. Claude Desktop, Claude Code, Cursor 등 MCP 호환 클라이언트에서 이메일 발송, 도메인 관리, 분석 조회가 가능합니다.
+@buchida/mcp는 AI 에이전트를 위해 만들어진 이메일 API의 공식 Model Context Protocol 서버입니다. buchida는 CLI, MCP 서버, 그리고 5개 언어 SDK (Node, Python, Go, Ruby, Java)를 제공하며, 모두 동일한 REST API 표면을 공유합니다. `@buchida/email` 템플릿은 한국어, 일본어, 중국어를 네이티브로 렌더링합니다.
 
 ## 설치
 
@@ -17,9 +17,9 @@
 npx @buchida/mcp
 ```
 
-## 빠른 시작
+## 첫 이메일 보내기
 
-Claude Desktop 설정 파일(`~/Library/Application Support/Claude/claude_desktop_config.json`)에 추가하세요:
+MCP 클라이언트 설정 파일(예: `~/Library/Application Support/Claude/claude_desktop_config.json`)에 추가하세요:
 
 ```json
 {
@@ -28,32 +28,32 @@ Claude Desktop 설정 파일(`~/Library/Application Support/Claude/claude_deskto
       "command": "npx",
       "args": ["@buchida/mcp"],
       "env": {
-        "BUCHIDA_API_KEY": "bc_live_xxxxxxxxxxxxxxxxxxxx"
+        "BUCHIDA_API_KEY": "bc_live_..."
       }
     }
   }
 }
 ```
 
-그런 다음 Claude에게 물어보세요: "hello@mybrand.com에서 user@example.com으로 환영 이메일을 보내줘"
-
-## 사용 가능한 도구
-
-| 도구 | 설명 |
-|------|------|
-| `send_email` | 트랜잭션 이메일 발송 |
-| `send_batch` | 여러 수신자에게 이메일 일괄 발송 |
-| `get_email` | 발송된 이메일의 상세 정보 및 상태 조회 |
-| `list_emails` | 필터링을 사용한 발송 이메일 목록 조회 |
-| `list_domains` | 인증된 발송 도메인 목록 조회 |
-| `manage_domains` | 도메인 추가, 인증 또는 삭제 |
-| `get_metrics` | 이메일 분석 및 전달율 지표 조회 |
+설정 후 에이전트에게 요청하세요:
+> "hello@example.com으로 'buchida에서 인사드립니다'라는 테스트 이메일을 보내줘"
 
 ## 문서
 
-- [빠른 시작 가이드](https://buchida.com/ko/docs/quickstart)
-- [MCP 설정 가이드](https://buchida.com/ko/docs/mcp)
-- [GitHub](https://github.com/Vyblor/buchida-mcp)
+전체 문서: **[buchida.com/docs](https://buchida.com/docs)**
+
+- API 레퍼런스: https://buchida.com/docs/api-reference
+- 빠른 시작 가이드: https://buchida.com/docs/quickstart
+- CJK 이메일 템플릿: https://buchida.com/docs/templates
+- MCP 서버 설정: https://buchida.com/docs/mcp
+- CLI 레퍼런스: https://buchida.com/docs/cli
+
+## 링크
+
+- **웹사이트:** [buchida.com](https://buchida.com)
+- **문서:** [buchida.com/docs](https://buchida.com/docs)
+- **요금제:** [buchida.com/pricing](https://buchida.com/pricing)
+- **GitHub:** https://github.com/Vyblor/buchida-mcp
 
 ## 라이선스
 

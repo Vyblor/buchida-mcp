@@ -1,15 +1,15 @@
 <div align="center">
   <img src="assets/logo-black.svg" alt="buchida" width="280" />
-  <p><strong>buchida邮件API的MCP服务器</strong></p>
+  <p><strong>buchida MCP 服务器 — 为 AI 代理打造的邮件 API</strong></p>
 
-  [English](README.md) | [한국어](README.ko.md) | [日本語](README.ja.md) | [中文](README.zh.md)
+  [English](README.md) | [한국어](README.ko.md) | [日本語](README.ja.md) | [**中文**](README.zh.md)
 
   [![npm version](https://img.shields.io/npm/v/@buchida/mcp)](https://www.npmjs.com/package/@buchida/mcp) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 </div>
 
 ---
 
-[buchida](https://buchida.com)邮件API的MCP（Model Context Protocol）服务器。支持从Claude Desktop、Claude Code、Cursor等MCP兼容客户端发送邮件、管理域名和查看分析数据。
+@buchida/mcp 是为 AI 代理打造的邮件 API 的官方 Model Context Protocol 服务器。buchida 提供 CLI、MCP 服务器和 5 种语言的 SDK (Node、Python、Go、Ruby、Java),所有这些都共享相同的 REST API 表面。`@buchida/email` 模板原生渲染韩语、日语和中文。
 
 ## 安装
 
@@ -17,9 +17,9 @@
 npx @buchida/mcp
 ```
 
-## 快速开始
+## 发送您的第一封邮件
 
-添加到Claude Desktop配置文件（`~/Library/Application Support/Claude/claude_desktop_config.json`）:
+添加到您的 MCP 客户端配置文件（例如 `~/Library/Application Support/Claude/claude_desktop_config.json`）:
 
 ```json
 {
@@ -28,32 +28,32 @@ npx @buchida/mcp
       "command": "npx",
       "args": ["@buchida/mcp"],
       "env": {
-        "BUCHIDA_API_KEY": "bc_live_xxxxxxxxxxxxxxxxxxxx"
+        "BUCHIDA_API_KEY": "bc_live_..."
       }
     }
   }
 }
 ```
 
-然后向Claude提问: "从hello@mybrand.com向user@example.com发送一封欢迎邮件"
-
-## 可用工具
-
-| 工具 | 说明 |
-|------|------|
-| `send_email` | 发送事务性邮件 |
-| `send_batch` | 向多个收件人批量发送邮件 |
-| `get_email` | 获取已发送邮件的详情和状态 |
-| `list_emails` | 按条件筛选已发送邮件列表 |
-| `list_domains` | 查看已验证的发送域名列表 |
-| `manage_domains` | 添加、验证或删除域名 |
-| `get_metrics` | 查看邮件分析和送达率指标 |
+配置完成后,向您的代理发送请求:
+> "发送一封测试邮件到 hello@example.com，内容是'来自 buchida 的问候'"
 
 ## 文档
 
-- [快速开始](https://buchida.com/zh/docs/quickstart)
-- [MCP设置指南](https://buchida.com/zh/docs/mcp)
-- [GitHub](https://github.com/Vyblor/buchida-mcp)
+完整文档: **[buchida.com/docs](https://buchida.com/docs)**
+
+- API 参考: https://buchida.com/docs/api-reference
+- 快速入门指南: https://buchida.com/docs/quickstart
+- CJK 邮件模板: https://buchida.com/docs/templates
+- MCP 服务器设置: https://buchida.com/docs/mcp
+- CLI 参考: https://buchida.com/docs/cli
+
+## 链接
+
+- **网站:** [buchida.com](https://buchida.com)
+- **文档:** [buchida.com/docs](https://buchida.com/docs)
+- **定价:** [buchida.com/pricing](https://buchida.com/pricing)
+- **GitHub:** https://github.com/Vyblor/buchida-mcp
 
 ## 许可证
 
