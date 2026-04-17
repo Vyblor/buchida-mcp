@@ -20,7 +20,8 @@ export interface ApiResponse<T = unknown> {
 	ok: boolean;
 	status: number;
 	data?: T;
-	error?: string;
+	error?: string; // human-readable message (backwards compat)
+	errorCode?: string; // machine-readable code from error.code (e.g. "domain_not_registered")
 }
 
 export class ApiClient {
@@ -62,14 +63,21 @@ export class ApiClient {
 			}
 
 			if (!response.ok) {
+				const body = data as Record<string, unknown> | undefined;
+				// Server returns { error: { code, message } } on structured errors
+				const structuredError = body?.error as Record<string, unknown> | undefined;
+				const errorCode =
+					typeof structuredError?.code === "string" ? structuredError.code : undefined;
 				const errorMessage =
-					(data as Record<string, unknown>)?.message ??
-					(data as Record<string, unknown>)?.error ??
+					structuredError?.message ??
+					body?.message ??
+					(typeof body?.error === "string" ? body.error : undefined) ??
 					`HTTP ${response.status}: ${response.statusText}`;
 				return {
 					ok: false,
 					status: response.status,
 					error: String(errorMessage),
+					errorCode,
 				};
 			}
 

@@ -1,4 +1,5 @@
 import type { ApiClient } from "../api-client.js";
+import { mapApiError } from "../lib/map-api-error.js";
 
 // ── list_templates — list user-saved templates ──
 export const listTemplatesTool = {
@@ -88,7 +89,12 @@ export async function handleSendWithTemplate(client: ApiClient, args: Record<str
 
 	if (!response.ok) {
 		return {
-			content: [{ type: "text" as const, text: `Error: ${response.error}` }],
+			content: [
+				{
+					type: "text" as const,
+					text: `Error: ${mapApiError({ code: response.errorCode, message: response.error })}`,
+				},
+			],
 			isError: true,
 		};
 	}

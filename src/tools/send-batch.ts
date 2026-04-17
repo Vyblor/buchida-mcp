@@ -1,4 +1,5 @@
 import type { ApiClient } from "../api-client.js";
+import { mapApiError } from "../lib/map-api-error.js";
 
 export const sendBatchTool = {
 	name: "send_batch",
@@ -67,7 +68,12 @@ export async function handleSendBatch(client: ApiClient, args: Record<string, un
 
 	if (!response.ok) {
 		return {
-			content: [{ type: "text" as const, text: `Error: ${response.error}` }],
+			content: [
+				{
+					type: "text" as const,
+					text: `Error: ${mapApiError({ code: response.errorCode, message: response.error })}`,
+				},
+			],
 			isError: true,
 		};
 	}

@@ -2,6 +2,14 @@
 
 All notable changes to `@buchida/mcp` will be documented in this file.
 
+## 0.1.6 — 2026-04-17
+
+### Added
+- Friendly error messages for `domain_not_registered` and `domain_not_verified` API responses. The returned content text now includes an actionable hint directing the LLM to instruct the user to visit https://buchida.com/dashboard/domains.
+
+### Changed
+- `api-client.ts` response shape now includes `errorCode` in addition to the human `error` message (backwards compatible).
+
 ## 0.1.5 — 2026-04-17
 
 ### Added

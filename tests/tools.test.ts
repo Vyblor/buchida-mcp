@@ -202,6 +202,57 @@ describe("Tool handlers", () => {
 		expect(result.content[0].text).toContain("Rate limit exceeded");
 	});
 
+	it("send_email maps domain_not_registered to friendly hint", async () => {
+		mockFetch.mockResolvedValueOnce({
+			ok: false,
+			status: 403,
+			statusText: "Forbidden",
+			text: async () =>
+				JSON.stringify({
+					error: {
+						code: "domain_not_registered",
+						message: "Domain 'nope.com' is not registered on your account.",
+					},
+				}),
+		});
+
+		const result = await toolHandlers.send_email(createClient(), {
+			from: "hello@nope.com",
+			to: "x@y.com",
+			subject: "test",
+		});
+
+		expect(result.isError).toBe(true);
+		expect(result.content[0].text).toContain("dashboard/domains");
+		expect(result.content[0].text).toContain("nope.com");
+	});
+
+	it("send_email maps domain_not_verified to dns hint", async () => {
+		mockFetch.mockResolvedValueOnce({
+			ok: false,
+			status: 403,
+			statusText: "Forbidden",
+			text: async () =>
+				JSON.stringify({
+					error: {
+						code: "domain_not_verified",
+						message: "Domain 'pending.com' has not completed DNS verification.",
+					},
+				}),
+		});
+
+		const result = await toolHandlers.send_email(createClient(), {
+			from: "hello@pending.com",
+			to: "x@y.com",
+			subject: "test",
+		});
+
+		expect(result.isError).toBe(true);
+		expect(result.content[0].text).toContain("dashboard/domains");
+		expect(result.content[0].text).toContain("pending.com");
+		expect(result.content[0].text).toContain("DNS");
+	});
+
 	it("create_api_key includes warning message", async () => {
 		mockSuccess({ id: "key_1", key: "bc_live_newkey1234567890ab" });
 		const result = await toolHandlers.create_api_key(createClient(), {

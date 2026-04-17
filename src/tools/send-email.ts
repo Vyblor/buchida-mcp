@@ -1,4 +1,5 @@
 import type { ApiClient } from "../api-client.js";
+import { mapApiError } from "../lib/map-api-error.js";
 
 export const sendEmailTool = {
 	name: "send_email",
@@ -61,7 +62,12 @@ export async function handleSendEmail(client: ApiClient, args: Record<string, un
 
 	if (!response.ok) {
 		return {
-			content: [{ type: "text" as const, text: `Error: ${response.error}` }],
+			content: [
+				{
+					type: "text" as const,
+					text: `Error: ${mapApiError({ code: response.errorCode, message: response.error })}`,
+				},
+			],
 			isError: true,
 		};
 	}
