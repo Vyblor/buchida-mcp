@@ -3,7 +3,7 @@
  * Resolves API key from tool input or BUCHIDA_API_KEY env var.
  */
 
-const API_KEY_PATTERN = /^bc_(live|test|cli)_[a-zA-Z0-9]{20,}$/;
+const API_KEY_PATTERN = /^bc_(live|test|cli)_[A-Za-z0-9_-]{20,}$/;
 
 export function resolveApiKey(toolInputKey?: string): string {
 	const key = toolInputKey || process.env.BUCHIDA_API_KEY;
