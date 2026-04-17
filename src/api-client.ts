@@ -3,6 +3,14 @@
  * Handles authentication and request formatting.
  */
 
+import { readFileSync } from "node:fs";
+import { dirname, join } from "node:path";
+import { fileURLToPath } from "node:url";
+
+const _pkgPath = join(dirname(fileURLToPath(import.meta.url)), "..", "package.json");
+const _pkg = JSON.parse(readFileSync(_pkgPath, "utf-8")) as { version: string };
+const MCP_VERSION = _pkg.version;
+
 export interface ApiClientOptions {
 	baseUrl: string;
 	apiKey: string;
@@ -34,6 +42,7 @@ export class ApiClient {
 			Authorization: `Bearer ${this.apiKey}`,
 			"Content-Type": "application/json",
 			Accept: "application/json",
+			"User-Agent": `buchida-mcp/${MCP_VERSION}`,
 		};
 
 		try {

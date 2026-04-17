@@ -93,6 +93,27 @@ describe("ApiClient", () => {
 		expect(result.error).toContain("Connection refused");
 	});
 
+	it("sends User-Agent header matching buchida-mcp/{version}", async () => {
+		mockFetch.mockResolvedValueOnce({
+			ok: true,
+			status: 200,
+			statusText: "OK",
+			text: async () => JSON.stringify({ data: [] }),
+		});
+
+		const client = createClient();
+		await client.post("/v1/emails", { from: "a@b.com", to: "c@d.com" });
+
+		expect(mockFetch).toHaveBeenCalledWith(
+			"https://api.buchida.com/v1/emails",
+			expect.objectContaining({
+				headers: expect.objectContaining({
+					"User-Agent": expect.stringMatching(/^buchida-mcp\/\d+\.\d+\.\d+$/),
+				}),
+			}),
+		);
+	});
+
 	it("strips trailing slash from base URL", async () => {
 		mockFetch.mockResolvedValueOnce({
 			ok: true,
