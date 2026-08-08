@@ -1,10 +1,14 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { ApiClient } from "../src/api-client.js";
 import { allTools, toolHandlers } from "../src/tools/index.js";
+import { handleSendBatch } from "../src/tools/send-batch.js";
 
 describe("Tool registry", () => {
-	it("exports 12 tools", () => {
-		expect(allTools).toHaveLength(12);
+	it("exports every registered tool", () => {
+		// Assert the actual registry rather than a frozen count, so adding a
+		// tool does not fail the suite for no reason — but removing one does.
+		expect(allTools.length).toBe(Object.keys(toolHandlers).length);
+		expect(allTools.length).toBeGreaterThanOrEqual(15);
 	});
 
 	it("has a handler for every tool", () => {
@@ -284,9 +288,42 @@ describe("Tool handlers", () => {
 			variables: { name: "Alice" },
 		});
 
+		// send_with_template renders the template, then submits through the
+		// normal send endpoint. There is no /v1/emails/template route — this
+		// assertion had been checking a URL that never existed.
 		expect(mockFetch).toHaveBeenCalledWith(
-			"https://api.buchida.com/v1/emails/template",
+			"https://api.buchida.com/v1/emails",
 			expect.objectContaining({ method: "POST" }),
 		);
+	});
+});
+
+// Regression: POST /v1/emails/batch takes a BARE ARRAY, not { emails: [...] }.
+// The tool wrapped it, so every batch call returned
+// "422 Request body must be an array" — it had never worked in the published
+// package. The Node and Python SDKs both pass the array directly.
+describe("send_batch request body shape", () => {
+	it("posts the array itself, not an object wrapping it", async () => {
+		const captured: { path?: string; body?: unknown } = {};
+		const fakeClient = {
+			post: async (path: string, body?: unknown) => {
+				captured.path = path;
+				captured.body = body;
+				return { ok: true, data: [{ id: "email_1" }, { id: "email_2" }] };
+			},
+		} as unknown as Parameters<typeof handleSendBatch>[0];
+
+		const emails = [
+			{ from: "a@buchida.com", to: "x@example.com", subject: "one", text: "1" },
+			{ from: "a@buchida.com", to: "y@example.com", subject: "two", text: "2" },
+		];
+
+		await handleSendBatch(fakeClient, { emails });
+
+		expect(captured.path).toBe("/v1/emails/batch");
+		expect(Array.isArray(captured.body)).toBe(true);
+		expect(captured.body).toEqual(emails);
+		// The exact shape the API rejects:
+		expect(captured.body).not.toHaveProperty("emails");
 	});
 });

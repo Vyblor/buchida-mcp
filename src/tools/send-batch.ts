@@ -64,7 +64,12 @@ export async function handleSendBatch(client: ApiClient, args: Record<string, un
 		};
 	}
 
-	const response = await client.post("/v1/emails/batch", { emails });
+	// POST /v1/emails/batch takes a BARE ARRAY, not { emails: [...] }.
+	// This wrapped the array, so every batch call came back with
+	// "422 Request body must be an array" — the tool has never worked.
+	// The Node and Python SDKs both pass the array directly; the API is the
+	// contract, and this is the outlier.
+	const response = await client.post("/v1/emails/batch", emails);
 
 	if (!response.ok) {
 		return {
