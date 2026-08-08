@@ -1,7 +1,7 @@
 {
 	"name": "@buchida/mcp",
-	"version": "0.1.6",
-	"description": "MCP server for the buchida email API — send emails, manage domains, and more from Claude, Cursor, or Copilot",
+	"version": "0.1.7",
+	"description": "MCP server for the buchida email API \u2014 send emails, manage domains, and more from Claude, Cursor, or Copilot",
 	"type": "module",
 	"bin": {
 		"buchida-mcp": "./dist/index.js"
@@ -17,8 +17,19 @@
 		"lint:fix": "biome check --write .",
 		"prepublishOnly": "pnpm build"
 	},
-	"keywords": ["buchida", "email", "mcp", "model-context-protocol", "claude", "cursor", "copilot"],
-	"files": ["dist", "README.md"],
+	"keywords": [
+		"buchida",
+		"email",
+		"mcp",
+		"model-context-protocol",
+		"claude",
+		"cursor",
+		"copilot"
+	],
+	"files": [
+		"dist",
+		"README.md"
+	],
 	"homepage": "https://buchida.com/docs/mcp",
 	"license": "MIT",
 	"author": "buchida <hello@buchida.com>",
