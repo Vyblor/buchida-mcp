@@ -10,7 +10,7 @@ import { getBaseUrl, resolveApiKey } from "./auth.js";
 import { allTools, toolHandlers } from "./tools/index.js";
 
 const SERVER_NAME = "buchida-mcp";
-const SERVER_VERSION = "0.1.0";
+const SERVER_VERSION = "0.1.8";
 
 export function createServer(): Server {
 	const server = new Server(

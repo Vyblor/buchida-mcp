@@ -16,6 +16,11 @@ export const sendEmailTool = {
 				description:
 					'Sender email address (e.g. "hello@example.com" or "Name <hello@example.com>")',
 			},
+			from_name: {
+				type: "string",
+				description:
+					'Sender display name, e.g. "Vyblor". Overrides any name in `from`. 1–100 chars; no line breaks, control characters, <, > or @.',
+			},
 			to: {
 				type: "string",
 				description: "Recipient email address",

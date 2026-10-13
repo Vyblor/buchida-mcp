@@ -64,6 +64,11 @@ export const sendWithTemplateTool = {
 				type: "string",
 				description: "Sender email address",
 			},
+			from_name: {
+				type: "string",
+				description:
+					'Sender display name, e.g. "Vyblor". Overrides any name in `from`. 1–100 chars; no line breaks, control characters, <, > or @.',
+			},
 			to: {
 				type: "string",
 				description: "Recipient email address",

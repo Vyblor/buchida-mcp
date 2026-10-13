@@ -2,6 +2,11 @@
 
 All notable changes to `@buchida/mcp` will be documented in this file.
 
+## 0.1.8 — 2026-10-13
+
+### Added
+- `from_name` (sender display name) on `send_email`, `send_batch` items and `send_with_template`. `from` may also be `"Name <addr>"`; `from_name` wins if both are given.
+
 ## 0.1.6 — 2026-04-17
 
 ### Added
